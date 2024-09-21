@@ -1,30 +1,38 @@
 const mongoose = require("mongoose");
+const StringReq = require("./utils/Strings.cjs").StringReq;
+const StringReqUnique = require("./utils/Strings.cjs").StringReqUnique;
+const StringUrls = require("./utils/Strings.cjs").StringUrls;
 
 const trabajosSchema = new mongoose.Schema({
-  fotoTrabajo: String,
+  fotoTrabajo: StringReq,
 });
 
 const categoriasOfrecidasSchema = new mongoose.Schema({
   idCategoria: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
     ref: "Categorias",
   },
-  precioCategoria: Number,
+  precioCategoria: { type: Number, required: true },
 });
 
 const contratistaSchema = new mongoose.Schema({
-  nombre: String,
-  apellido: String,
-  ciudad: String,
-  especialidad: String,
-  email: String,
-  username: String,
-  password: String,
-  fotoDePerfil: String,
-  ultimosTrabajos: [trabajosSchema],
+  nombre: StringReq,
+  apellido: StringReq,
+  ciudad: StringReq,
+  especialidad: StringReq,
+  email: StringReqUnique,
+  username: StringReqUnique,
+  password: StringReq,
+  fotoDePerfil: StringUrls,
+  ultimosTrabajos: { type: [trabajosSchema], default: [] },
   categoriasOfrecidas: [categoriasOfrecidasSchema],
 });
 
-const Contratistas = mongoose.model("Contratistas", contratistaSchema,"Contratistas");
+const Contratistas = mongoose.model(
+  "Contratistas",
+  contratistaSchema,
+  "Contratistas"
+);
 
 module.exports = Contratistas;

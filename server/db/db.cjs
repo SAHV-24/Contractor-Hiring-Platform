@@ -1,8 +1,14 @@
 const mongoose = require("mongoose");
 
 const dbConnection = mongoose.connect(
-  "mongodb+srv://sergio:sahv2407@clustersergiouao.l2sbp.mongodb.net/ProyectoED"
+  "mongodb+srv://root:vayEr74ZySThAyrj@clustersergiouao.l2sbp.mongodb.net/ProyectoED"
 );
 
+const db = mongoose.connection;
 
-module.exports = dbConnection;
+db.on("error", console.error.bind(console, "Connection Error"));
+db.once("open", () => {
+  console.log("Connected to Database");
+});
+
+module.exports = mongoose;

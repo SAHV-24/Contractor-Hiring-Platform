@@ -12,8 +12,26 @@ npm run dev
 
 npm run serv
 
+# BACKEND DOCUMENTATION
+
+To manage the *api* you shall use: localhost:3000/api/
+
+To GET any information of any collection: ENDPOINT/{collection}
+Where collection can be "Contratistas, Usuarios, Categorias, Citas"
+
+To create any document on any collection you should do a POST petition to:
+    =>ENDPOINT/{collection}/insert
+(remember to send a json body)
 
 
+To UPDATE, do a PUT petition to=>
+    => ENDPOINT/collection/update/{ObjectId}
+Where ObjectId is the one that you'll delete
+(remember to send a json body).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+To DELETE, do a DELETE petition to=>
+    => ENDPOINT/collection/delete/{ObjectId}
+Where ObjectId is the one that you'll delete
+(You don't need to send any body)
+
