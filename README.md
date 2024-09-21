@@ -4,34 +4,44 @@
 
 npm run all
 
-## Run dev mode
+## Run Dev Mode
 
 npm run dev
 
-## Run server
+## Run Server
 
 npm run serv
 
 # BACKEND DOCUMENTATION
 
-To manage the *api* you shall use: localhost:3000/api/
+To manage the *API*, you shall use: **localhost:3000/api/**
 
-To GET any information of any collection: ENDPOINT/{collection}
-Where collection can be "Contratistas, Usuarios, Categorias, Citas"
+### Endpoints
 
-To create any document on any collection you should do a POST petition to:
-    =>ENDPOINT/{collection}/insert
-(remember to send a json body)
+To **GET** any information from any collection:
 
+<p style="text-align: center;">
+  *ENDPOINT/{collection}*
+</p>
+Where `collection` can be: *Contratistas, Usuarios, Categorias, Citas*
 
-To UPDATE, do a PUT petition to=>
-    => ENDPOINT/collection/update/{ObjectId}
-Where ObjectId is the one that you'll delete
-(remember to send a json body).
+To **create** any document in any collection, make a *POST* request to:
 
+<p style="text-align: center;">
+  *ENDPOINT/{collection}/insert*
+</p>
+*(Remember to send a JSON body)*
 
-To DELETE, do a DELETE petition to=>
-    => ENDPOINT/collection/delete/{ObjectId}
-Where ObjectId is the one that you'll delete
-(You don't need to send any body)
+To **UPDATE**, make a *PUT* request to:
 
+<p style="text-align: center;">
+  *ENDPOINT/collection/update/{ObjectId}*
+</p>
+Where `ObjectId` is the one you want to update *(remember to send a JSON body)*.
+
+To **DELETE**, make a *DELETE* request to:
+
+<p style="text-align: center;">
+  *ENDPOINT/collection/delete/{ObjectId}*
+</p>
+Where `ObjectId` is the one you want to delete *(you don't need to send any body)*.
