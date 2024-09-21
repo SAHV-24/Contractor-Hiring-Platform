@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "all": "concurrently \"npm run dev\" \"nodemon ./server/server.cjs\"",
+    "all": "concurrently \"npm run dev\" \"nodemon ./server/router.cjs\"",
     "serv": "nodemon ./server/router.cjs",
     "dev": "vite",
     "build": "vite build",
