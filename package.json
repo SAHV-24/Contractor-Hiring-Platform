@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "all": "concurrently \"npm run dev\" \"nodemon ./server/server.cjs\"",
-    "serv": "nodemon ./server/server.cjs",
+    "serv": "nodemon ./server/router.cjs",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "edya2": "file:",
     "express": "^4.21.0",
     "mongoose": "^8.6.3",
