@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "all": "concurrently \"npm run dev\" \"nodemon ./server/router.cjs\"",
-    "serv": "nodemon ./server/router.cjs",
+    "all": "concurrently \"npm run dev\" \"nodemon ./server/server.cjs\"",
+    "serv": "nodemon ./server/server.cjs",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",

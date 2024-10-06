@@ -12,6 +12,26 @@ module.exports.getAll = async (req, res) => {
   }
 };
 
+
+module.exports.getByUsername = async (req, res) => {
+  try {
+    const username = req.query.username;
+    
+    const answer = await Contratistas.find({ username }).lean(); 
+
+    // Si no encuentras ningún usuario
+    if (!answer || answer.length === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json(answer);
+  } catch (err) {
+    console.error(err, " mientras se intentaba acceder al contratista");
+    res.status(500).send(err);
+  }
+};
+
+
 //INSERT
 module.exports.insert = async (req, res) => {
   const contratista = new Contratistas({ ...req.body });

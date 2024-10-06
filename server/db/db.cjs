@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+require("dotenv").config()
 
 const dbConnection = mongoose.connect(
-  "mongodb+srv://root:vayEr74ZySThAyrj@clustersergiouao.l2sbp.mongodb.net/ProyectoED"
+  process.env.DATABASE_URL
 );
 
 const db = mongoose.connection;

@@ -12,6 +12,32 @@ module.exports.getAll = async (req, res) => {
   }
 };
 
+// GET BY ID
+
+module.exports.getById = async (req,res)=>{  
+
+  try{
+    const _id = req.query._id
+
+    const answer = await Categorias.find({_id}).lean()
+
+    if(answer.length == 0 || !answer){
+      res.status(404).send("La categoría no fue encontrada")
+    }else{
+      
+      res.status(200).json(answer)
+    }   
+    
+  }catch(err){
+    
+    console.error(`${err} al intentar acceder a la categoría con id: ${_id}`)
+    res.status(500).send(err)
+  }
+}
+
+
+
+
 // INSERT
 module.exports.insert = async (req, res) => {
   const categoria = new Categorias({ ...req.body });

@@ -11,6 +11,12 @@ router.get("/Contratistas", contratistasController.getAll);
 router.get("/Categorias", categoriasController.getAll);
 router.get("/Citas", citasController.getAll);
 
+// Get by certain parameter, by username, etc..
+router.get("/Usuarios/username", usuariosController.getByUsername);// this works with query params, such as : ../Usuarios/username?username='username'
+router.get("/Contratistas/username", contratistasController.getByUsername);// this works with query params, such as : ../Contratistas/username?username='username'
+router.get("/Categorias/getById",categoriasController.getById)// this works with query params, such as : ../Categorias/getById?_id='id'
+router.get("/Citas/getById",citasController.getById)// this works with query params, such as : ../Categorias/getById?_id='id'
+
 router.post("/Usuarios/insert", usuariosController.insert);
 router.post("/Contratistas/insert", contratistasController.insert);
 router.post("/Categorias/insert", categoriasController.insert);
