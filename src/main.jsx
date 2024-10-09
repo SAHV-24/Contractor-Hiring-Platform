@@ -5,15 +5,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./assets/views/Home";
 import { Search } from "./assets/views/Search";
 import { Help } from "./assets/views/Help";
-import { NavBar } from "./assets/Components/NavBar/NavBar";
-import { Profile } from "./assets";
+import { NavBar, Profile } from "./assets";
+import Footer from "./assets/Components/Footer/Footer";
 
-const username = "juan123"
+const username = "juan123";
 
 createRoot(document.getElementById("root")).render(
   <>
     <BrowserRouter>
-      <NavBar />      
+      <body>
+        <NavBar />
+        <Footer />
+      </body>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/search" element={<Search />}></Route>
