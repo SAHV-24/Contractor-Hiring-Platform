@@ -1,8 +1,13 @@
 import { useState } from "react";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
-function NavBar() {
+export function NavBar() {
+  // eslint-disable-next-line no-unused-vars
   const [isLoggedIn, setLoggedIn] = useState(true);
+
+  // TODO implement the USERNAME LOGIC
+  const username = "juan123";
 
   //TODO implement the logged in logic
   // TODO implement the PICTURES logic
@@ -23,31 +28,25 @@ function NavBar() {
             <img src={"./"} alt="" />
           </div>
 
-          <span>
-            <a href="">Inicio</a>
+          <span >
+            <Link to="/" className="link">Inicio</Link>
           </span>
           <span>
-            <a href="">Buscar</a>
+            <Link to="/search" className="link">Buscar</Link>
           </span>
           <span>
-            <a href="">Ayuda</a>
+            <Link to="/help" className="link">Ayuda</Link>
           </span>
         </section>
         <section id="user-section">
           <div className="navbar-picture">
-            <a href="">
-              <img src={profilePicture} alt="" />
-            </a>
+            <img src={profilePicture} alt="" />
           </div>
-          <span>
-            <a href="" id="user-name">
-              {name}
-            </a>
+          <span id="user-name">
+            <Link to={`/profile/${username}`} id="user-name" className="link">{name}</Link>
           </span>
         </section>
       </section>
     </header>
   );
 }
-
-export default NavBar;

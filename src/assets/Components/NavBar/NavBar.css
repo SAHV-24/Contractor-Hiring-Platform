@@ -19,7 +19,7 @@ header {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-a {
+.link {
   font-style: normal;
   text-decoration: none;
   color: white;
@@ -47,7 +47,7 @@ a:hover {
   align-items: center;
 }
 
-.navbar-picture a img {
+.navbar-picture img {
   height: 35px;
   border-radius: 100%;
 }
@@ -63,3 +63,5 @@ a:hover {
 #user-name {
   font-style: italic;
 }
+
+/* TODO make navbar resizable */
