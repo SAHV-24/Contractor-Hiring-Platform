@@ -11,18 +11,18 @@ import Footer from "./assets/Components/Footer/Footer";
 const username = "juan123";
 
 createRoot(document.getElementById("root")).render(
-  <>
-    <BrowserRouter>
-      <body>
-        <NavBar />
-        <Footer />
-      </body>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/search" element={<Search />}></Route>
-        <Route path="/help" element={<Help />}></Route>
-        <Route path={`/profile/${username}`} element={<Profile />}></Route>
-      </Routes>
-    </BrowserRouter>
-  </>
+  <BrowserRouter>
+    <div className="app-container">
+      <NavBar />
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/help" element={<Help />} />
+          <Route path={`/profile/${username}`} element={<Profile />} />
+        </Routes>
+      </div>
+      <Footer />
+    </div>
+  </BrowserRouter>
 );
