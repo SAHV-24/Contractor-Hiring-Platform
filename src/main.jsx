@@ -7,42 +7,22 @@ import { Search } from "./assets/views/Search";
 import { Help } from "./assets/views/Help";
 import { NavBar, Profile } from "./assets";
 import Footer from "./assets/Components/Footer/Footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PaginaDeBusqueda from "./PaginaDeBusqueda/PaginaDeBusqueda";
 
 const username = "juan123";
 
 createRoot(document.getElementById("root")).render(
-<<<<<<< HEAD
-  <StrictMode>
-    <BrowserRouter>
-      <div className="container">
-        <NavBar />
-        <main>
-          <Routes>
-            {/* en path coloque como va a salir en la url tipo https etc etc/comolopuseenelPath y en element el componente */}
-            <Route path="/busqueda" element={<PaginaDeBusqueda />} />
-          </Routes>
-        </main>
-        <Footer />
+  <BrowserRouter>
+    <div className="app-container">
+      <NavBar />
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/help" element={<Help />} />
+          <Route path={`/profile/${username}`} element={<Profile />} />
+        </Routes>
       </div>
-    </BrowserRouter>
-  </StrictMode>
+      <Footer />
+    </div>
+  </BrowserRouter>
 );
-=======
-  <>
-    <BrowserRouter>
-      <body>
-        <NavBar />
-        <Footer />
-      </body>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/search" element={<Search />}></Route>
-        <Route path="/help" element={<Help />}></Route>
-        <Route path={`/profile/${username}`} element={<Profile />}></Route>
-      </Routes>
-    </BrowserRouter>
-  </>
-);
->>>>>>> 148835ee2bc7abd2635aac7850581d6033727a5f
