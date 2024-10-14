@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-//import axios from "axios";
-import './PaginaDeBusqueda.css';
+import "./PaginaDeBusqueda.css";
 
 const PaginaDeBusqueda = () => {
   const [contratistas, setContratistas] = useState([]);
@@ -8,100 +7,97 @@ const PaginaDeBusqueda = () => {
   const [filtros, setFiltros] = useState({
     masCercano: false,
     menorPrecio: true,
-    guardados: false
+    guardados: false,
   });
 
-  // esto es una prueba
-  const contratistasPrueba = [
-    {
-      _id: '1',
-      nombre: 'Juanito Pereira',
-      ciudad: 'Cali',
-      precioCategoria: 400000,
-      ratingUsuario: 5,
-      fotoDePerfil: 'https://placehold.co/60',
-      distancia: 5,
-      guardado: true
-    },
-    {
-      _id: '2',
-      nombre: 'Juanito Pereira',
-      ciudad: 'Bogotá',
-      precioCategoria: 350000,
-      ratingUsuario: 4,
-      fotoDePerfil: 'https://placehold.co/60',
-      distancia: 50,
-      guardado: false
-    },
-    {
-      _id: '3',
-      nombre: 'Juanito',
-      ciudad: 'Pereira',
-      precioCategoria: 300000,
-      ratingUsuario: 5,
-      fotoDePerfil: 'https://placehold.co/60',
-      distancia: 15,
-      guardado: true
-    },
-    {
-      _id: '4',
-      nombre: 'Juanito',
-      ciudad: 'Palmira',
-      precioCategoria: 450000,
-      ratingUsuario: 4,
-      fotoDePerfil: 'https://placehold.co/60',
-      distancia: 10,
-      guardado: false
-    },
-  ];
+  const category = "Electricidad"; //TODO esto se tiene que obtener de un <input> del html
 
-  
-  const fetchContratistas = async () => {
-    try {
-      setContratistas(contratistasPrueba);
-      setFilteredContratistas(contratistasPrueba);
-      {/*
-      const res = await axios.get("http://localhost:3000/api/Contratistas"); 
-      setContratistas(res.data);
-      setFilteredContratistas(res.data);
-      */}
-    } catch (error) {
-      console.error("Error al obtener contratistas", error);
-    }
-  };
-
+  // LO que está desde la línea 16 hasta la línea 60 se puede poner en un custom hook
   const aplicarFiltros = () => {
     let filtrados = [...contratistas];
-
     if (filtros.masCercano) {
-      filtrados = filtrados.sort((a, b) => a.distancia - b.distancia); 
+      filtrados = filtrados.sort((a, b) => a.distancia - b.distancia);
     }
     if (filtros.menorPrecio) {
-      filtrados = filtrados.sort((a, b) => a.precioCategoria - b.precioCategoria);
+      filtrados = filtrados.sort(
+        (a, b) => a.precioCategoria - b.precioCategoria
+      );
     }
     if (filtros.guardados) {
-      filtrados = filtrados.filter(contratista => contratista.guardado);
+      filtrados = filtrados.filter((contratista) => contratista.guardado);
     }
-
     setFilteredContratistas(filtrados);
   };
-
-  
-  useEffect(() => {
-    fetchContratistas();
-  }, []);
-
-  
-  useEffect(() => {
-    aplicarFiltros();
-  }, [filtros, contratistas]);
 
   const manejarFiltro = (e) => {
     setFiltros({
       ...filtros,
-      [e.target.name]: e.target.checked
+      [e.target.name]: e.target.checked,
     });
   };
+
+  // función para settear a los contratistas
+  useEffect(() => {
+    const getContratistas = async () => {
+      const data = await fetch("http://localhost:3000/api/search", {
+        headers: { "Content-type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({ category }),
+      }); // hace la petición a la API
+
+      const results = await data.json();
+
+      // Esto retorna un json de esta forma:
+
+      /* ES UN ARREGLO DE OBJETOS:
+          [
+            {
+                    _id,
+                    rating, 
+                    nombre,
+                    apellido, 
+                    ciudad,
+                    especialidad, 
+                    username,
+                    fotoDePerfil,
+                    categoriasOfrecidas, (AQUÍ SE MUESTRA EL NOMBRE DE LA CATEGORÍA)
+                    categoriasInfo, (AQUÍ SE MUESTRA EL PRECIO)
+              },
+              {
+                "_id": "66e4890b5830452cc3c355fd",
+                "rating": 5,
+                "nombre": "Luis",
+                "apellido": "Fernandez",
+                "ciudad": "Cartagena",
+                "especialidad": "Plomero",
+                "username": "luis123",
+                "fotoDePerfil": "foto4.jpg",
+                "categoriasOfrecidas": [
+                  {
+                    "idCategoria": "66e4886cbddb83c50ec356f5",
+                    "precioCategoria": 45000
+                  }
+                ],
+                "categoriasInfo": {
+                  "_id": "66e4886cbddb83c50ec356f5",
+                  "nombre": "Plomería",
+                  "imagen": "plomeria.jpg"
+                }
+              }
+          ]
+
+
+*/
+
+      setContratistas(results); // cambia el estado
+    };
+
+    getContratistas();
+  }, []);
+
+  useEffect(() => {
+    aplicarFiltros();
+  }, [filtros, contratistas]);
 
   return (
     <div className="busqueda-container">
@@ -137,6 +133,7 @@ const PaginaDeBusqueda = () => {
           </label>
         </div>
       </div>
+      {/* Esto se puede segregar en algo componentes! */}
 
       <div className="resultados">
         {filteredContratistas.map((contratista) => (
@@ -144,9 +141,11 @@ const PaginaDeBusqueda = () => {
             <img src={contratista.fotoDePerfil} alt={contratista.nombre} />
             <div className="info-contratista">
               <h3>{`${contratista.nombre} - ${contratista.ciudad}`}</h3>
-              <p>${contratista.precioCategoria}</p>
-              <p>{contratista.ratingUsuario} estrellas</p>
-              <button onClick={()=> alert("Cita solicitada OKS?")}>Solicitar cita</button>
+              <p>${contratista.categoriasOfrecidas[0][0].precioCategoria}</p>
+              <p>{contratista.rating} estrellas</p>
+              <button onClick={() => alert("Cita solicitada OKS?")}>
+                Solicitar cita
+              </button>
             </div>
           </div>
         ))}

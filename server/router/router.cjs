@@ -6,6 +6,10 @@ const citasController = require("../controllers/citasController.cjs");
 const usuariosController = require("../controllers/usuariosController.cjs");
 const contratistasController = require("../controllers/contratistasController.cjs");
 
+
+router.post("/search",contratistasController.search)
+
+
 router.get("/Usuarios", usuariosController.getAll);
 router.get("/Contratistas", contratistasController.getAll);
 router.get("/Categorias", categoriasController.getAll);

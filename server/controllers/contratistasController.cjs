@@ -1,5 +1,73 @@
 const Contratistas = require("../models/Contratistas.cjs");
 
+// SEARCH}}
+
+module.exports.search = async (req, res) => {
+  const category = req?.body?.category;
+
+  try {
+    const contratistas = await Contratistas.aggregate([
+      {
+        $lookup: {
+          from: "Categorias", // Nombre de la colección de categorías
+          localField: "categoriasOfrecidas.idCategoria",
+          foreignField: "_id",
+          as: "categoriasInfo",
+        },
+      },
+      {
+        $unwind: { path: "$categoriasInfo" },
+      },
+      {
+        $match: {
+          "categoriasInfo.nombre": category, // Filtra por la categoría deseada
+        },
+      },
+      {
+        $lookup: {
+          from: "Citas",
+          localField: "_id",
+          foreignField: "idContratista",
+          as: "citasContratista",
+        },
+      },
+      {
+        $unwind: {
+          path: "$citasContratista",
+          preserveNullAndEmptyArrays: true, // Opcional: si quieres mantener contratistas sin citas
+        },
+      },
+      {
+        $group: {
+          _id: "$_id", // Agrupar por el _id del contratista
+          rating: { $avg: "$citasContratista.ratingUsuario" }, // Calcular el promedio del rating
+          nombre: { $first: "$nombre" }, // Mantener otros campos
+          apellido: { $first: "$apellido" },
+          ciudad: { $first: "$ciudad" },
+          especialidad: { $first: "$especialidad" },
+          username: { $first: "$username" },
+          fotoDePerfil: { $first: "$fotoDePerfil" },
+          categoriasOfrecidas: {
+            $push: { // Cambia a $push para mantener solo la categoría que coincida
+              $filter: {
+                input: "$categoriasOfrecidas",
+                as: "cat",
+                cond: { $eq: ["$$cat.idCategoria", "$categoriasInfo._id"] }, // Filtrar las categorías ofrecidas que coinciden
+              },
+            },
+          },
+          categoriasInfo: { $first: "$categoriasInfo" }, // Mantener solo la categoría que coincide
+        },
+      },
+    ]);
+    
+
+    res.status(200).json(contratistas);
+  } catch (e) {
+    res.status(500).json(e.message);
+  }
+};
+
 // GET ALL
 module.exports.getAll = async (req, res) => {
   try {
@@ -7,17 +75,16 @@ module.exports.getAll = async (req, res) => {
 
     res.status(200).json(answer);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).send(err);
   }
 };
 
-
 module.exports.getByUsername = async (req, res) => {
   try {
     const username = req.query.username;
-    
-    const answer = await Contratistas.find({ username }).lean(); 
+
+    const answer = await Contratistas.find({ username }).lean();
 
     // Si no encuentras ningún usuario
     if (!answer || answer.length === 0) {
@@ -31,7 +98,6 @@ module.exports.getByUsername = async (req, res) => {
   }
 };
 
-
 //INSERT
 module.exports.insert = async (req, res) => {
   const contratista = new Contratistas({ ...req.body });
@@ -40,11 +106,10 @@ module.exports.insert = async (req, res) => {
     const answer = await contratista.save();
     res.status(200).send(answer);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).send(err);
   }
 };
-
 
 // UPDATE
 module.exports.update = async (req, res) => {
@@ -53,7 +118,7 @@ module.exports.update = async (req, res) => {
 
     const body = req.body;
     // This flag is added because "__v" attribute isn't working idkw
-    const hasBeenUpdated = false; 
+    const hasBeenUpdated = false;
 
     Object.keys(body).forEach((key) => {
       if (body[key]) {
@@ -68,11 +133,10 @@ module.exports.update = async (req, res) => {
     const answer = await contratista.save();
     res.status(200).send(answer);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).send(err);
   }
 };
-
 
 //DELETE
 module.exports.delete = async (req, res) => {

@@ -3,21 +3,15 @@ const express = require("express");
 const cors = require("cors");
 const router = require("./router/router.cjs");
 const db = require("./db/db.cjs");
-
 require("dotenv").config(); // file for protecting the info
 
 const app = express();
 
-const env = process.env;
-const PORT = env.PORT;
-const frontendURI = env.localFrontURI
+app.use(cors());
+app.use(express.json())
 
-app.use(express.json());
-app.use(
-  cors({
-    origin: frontendURI,
-  })
-);
+const env = process.env;
+const PORT = env.PORT;;
 
 app.use("/api", router);
 
