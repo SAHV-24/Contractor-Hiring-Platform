@@ -19,11 +19,23 @@
   --light-gray:#D1CCCC;
     font-family: 'Roboto';
 }
-
-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+html, body {
+  height: 100%;
 }
 
+
+body {
+  margin: 0 !important;
+}
+
+
+#root {
+  min-height: 95%;
+  display: block;
+
+}
+
+#main{
+  min-height: calc(74vh);
+  display: block;
+}

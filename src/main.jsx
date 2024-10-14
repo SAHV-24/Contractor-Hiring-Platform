@@ -13,10 +13,6 @@ const username = "juan123";
 createRoot(document.getElementById("root")).render(
   <>
     <BrowserRouter>
-      <body>
-        <NavBar />
-        <Footer />
-      </body>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/search" element={<Search />}></Route>
