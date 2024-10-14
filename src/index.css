@@ -12,30 +12,43 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --main-color: #57BBB4;
-  --sec-color: #96D6D0;;
+  --main-color: #57bbb4;
+  --sec-color: #96d6d0;
   --ter-color: #239089;
-  --gray:#717171;
-  --light-gray:#D1CCCC;
-    font-family: 'Roboto';
+  --gray: #717171;
+  --light-gray: #d1cccc;
 }
-html, body {
+html,
+body {
   height: 100%;
 }
-
 
 body {
   margin: 0 !important;
 }
 
-
 #root {
   min-height: 95%;
   display: block;
-
 }
 
-#main{
+#main {
   min-height: calc(74vh);
   display: block;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#jcole {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
 }

@@ -1,3 +1,6 @@
+import PaginaDeBusqueda from "../../PaginaBusqueda/PaginaDeBusqueda";
 export function Search() {
-  return <h2> We are searching</h2>;
+  return <>
+  <PaginaDeBusqueda/>
+  </>;
 }
