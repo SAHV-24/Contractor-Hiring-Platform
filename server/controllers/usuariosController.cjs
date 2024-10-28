@@ -14,7 +14,7 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.getByUsername = async (req, res) => {
   try {
-    const username = req.query.username;
+    const username = req.params.username
     
     // Asegúrate de esperar la resolución de la promesa
     const answer = await Usuarios.find({ username }).lean(); 

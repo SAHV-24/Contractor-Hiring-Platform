@@ -1,3 +1,3 @@
 export function Help(){
-    return (<h1>This is for help</h1>)
+    return (<h1 style={{color:"black"}}>This is for help</h1>)
 }

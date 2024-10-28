@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Help, Home, Profile, Search } from "./assets";
+import { Help, Home, Profile, Search } from "../assets";
 
 export function AppRouter() {
-  const username = "juan123";
 
   return (
     <div className="app-container">
@@ -10,8 +9,8 @@ export function AppRouter() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/help" element={<Help />} />
-          <Route path={`/profile/${username}`} element={<Profile />} />
+          <Route path="/help" element={<Help />}></Route>
+          <Route path={`/profile/:username`} element={<Profile />}></Route>
         </Routes>
       </div>
     </div>
