@@ -1,5 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import { Help, Home, Profile, Search } from "../assets";
+import { Home } from "../views/Home/Home";
+import { Help } from "../views/Help/Help";
+import { Profile } from "../views/Profile/Profile";
+import { Search } from "../views/Search/Search";
+
 
 export function AppRouter() {
 

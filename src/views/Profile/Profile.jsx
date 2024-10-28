@@ -1,17 +1,37 @@
 
-import { Logo } from "../Components/Logo";
-import { useParams } from "react-router-dom";
-import { useDataFromUser } from "../Hooks/useDataFromUser";
+import { Logo } from "../../Components/Logo/Logo";
 
 // eslint-disable-next-line react/prop-types
 export function Profile() {
 
+  //TODO! Esto debe de ser implementado con el paradigma de redux!
+
   const user = {
-    nombre:"Usuario",
-    fotoDePerfil:"https://i.pinimg.com/474x/41/2f/95/412f951a84614f3eaa634b44b7514e0e.jpg",
-    username:"Bob",
-    ultimasCategorias:[]
-  } 
+    "_id": {
+      "$oid": "66e4890b5830452cc3c355fd"
+    },
+    "nombre": "Luis",
+    "apellido": "Fernandez",
+    "ciudad": "Cartagena",
+    "especialidad": "Plomero",
+    "email": "luis@ejemplo.com",
+    "username": "luis123",
+    "password": "hashedpassword",
+    "fotoDePerfil": "https://www.hola.com/horizon/43/20dddfae05b6-luis-miguel.jpg",
+    "ultimosTrabajos": [
+      {
+        "fotoTrabajo": "trabajo2.jpg"
+      }
+    ],
+    "ultimasCategorias": [
+      {
+        "idCategoria": {
+          "$oid": "66e4886cbddb83c50ec356f5"
+        },
+        "precioCategoria": 45000
+      }
+    ]
+  }
 
   if (!user) return <div>Cargando...</div>; // Mostrar algo mientras carga
 

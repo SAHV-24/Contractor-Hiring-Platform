@@ -1,17 +1,17 @@
-import { useContext } from "react";
-import "./NavBar.css";
+// eslint-disable-next-line no-unused-vars
 import { Link } from "react-router-dom";
+import "./NavBar.css";
 
 export function NavBar() {
-  // eslint-disable-next-line no-unused-vars
 
- const user = {
-    nombre:"Usuario",
-    fotoDePerfil:"https://i.pinimg.com/474x/41/2f/95/412f951a84614f3eaa634b44b7514e0e.jpg",
-    username:"Bob"
-  }
+  //TODO! Esto debe de ser implementado con el paradigma de redux!
 
-  
+  const user = {
+    nombre: "Usuario",
+    fotoDePerfil:
+      "https://i.pinimg.com/474x/41/2f/95/412f951a84614f3eaa634b44b7514e0e.jpg",
+    username: "luis123",
+  };
 
   return (
     <header>
