@@ -12,7 +12,6 @@ const firebaseConfig = {
 
 //Is the main configuration for our project, it has some atributes as the id,
 //the project key and some other things
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(); // para la autenticación de firebase
 const provider = new GoogleAuthProvider();

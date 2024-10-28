@@ -1,11 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "../views/Home/Home";
-import { Help } from "../views/Help/Help";
-import { Profile } from "../views/Profile/Profile";
-import { Search } from "../views/Search/Search";
-
+import { Home } from "../Views/Home/Home";
+import { Help } from "../Views/Help/Help";
+import { Profile } from "../Views/Profile/Profile";
+import { Search } from "../Views/Search/Search";
+import { PrivateRoutes } from "./PrivateRoutes";
+import { Error404 } from "../Views/Error404/Error404";
+import { Login } from "../Components/Login/Login";
+import { Register } from "../Components/Register/Register";
 
 export function AppRouter() {
+ 
 
   return (
     <div className="app-container">
@@ -14,7 +18,31 @@ export function AppRouter() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/help" element={<Help />}></Route>
-          <Route path={`/profile/:username`} element={<Profile />}></Route>
+          <Route
+            path={`/profile/:username`}
+            element={
+              <PrivateRoutes>
+                <Profile />
+              </PrivateRoutes>
+            }
+          ></Route>
+          <Route path="/*" element={<Error404 />} />
+          <Route
+            path="/login"
+            element={
+              <PrivateRoutes>
+                <Login />
+              </PrivateRoutes>
+            }
+          ></Route>
+          <Route
+            path="/register"
+            element={
+              <PrivateRoutes>
+                <Register />
+              </PrivateRoutes>
+            }
+          ></Route>
         </Routes>
       </div>
     </div>

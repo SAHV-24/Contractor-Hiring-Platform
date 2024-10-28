@@ -48,10 +48,6 @@ body {
   grid-template-rows: 1fr 5fr 1fr;
 }
 
-.content {
-  flex: 1;
-  padding: 2rem;
-}
 
 .sec-color .text {
   color: var(--sec-color);

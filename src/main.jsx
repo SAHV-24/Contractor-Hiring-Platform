@@ -4,10 +4,12 @@ import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./Router/AppRouter";
 import { NavBar } from "./Components/NavBar/NavBar";
 import { Footer } from "./Components/Footer/Footer";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 createRoot(document.getElementById("root")).render(
   <>
-
+    <Provider store={store}>
       <BrowserRouter>
         <div id="jcole">
           <NavBar />
@@ -15,5 +17,6 @@ createRoot(document.getElementById("root")).render(
           <Footer />
         </div>
       </BrowserRouter>
+    </Provider>
   </>
 );
