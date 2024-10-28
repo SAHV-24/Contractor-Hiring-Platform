@@ -1,37 +1,61 @@
-
+import "./Profile.css";
 import { Logo } from "../../Components/Logo/Logo";
+import * as React from "react";
+import dayjs, { Dayjs } from "dayjs";
+import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 
 // eslint-disable-next-line react/prop-types
 export function Profile() {
-
   //TODO! Esto debe de ser implementado con el paradigma de redux!
 
   const user = {
-    "_id": {
-      "$oid": "66e4890b5830452cc3c355fd"
+    _id: {
+      $oid: "66e4890b5830452cc3c355fd",
     },
-    "nombre": "Luis",
-    "apellido": "Fernandez",
-    "ciudad": "Cartagena",
-    "especialidad": "Plomero",
-    "email": "luis@ejemplo.com",
-    "username": "luis123",
-    "password": "hashedpassword",
-    "fotoDePerfil": "https://www.hola.com/horizon/43/20dddfae05b6-luis-miguel.jpg",
-    "ultimosTrabajos": [
+    nombre: "Luis",
+    apellido: "Fernandez",
+    ciudad: "Cartagena",
+    especialidad: "Plomero",
+    email: "luis@ejemplo.com",
+    username: "luis123",
+    password: "hashedpassword",
+    fotoDePerfil:
+      "https://www.hola.com/horizon/43/20dddfae05b6-luis-miguel.jpg",
+    ultimosTrabajos: [
       {
-        "fotoTrabajo": "trabajo2.jpg"
-      }
+        fotoTrabajo: "trabajo2.jpg",
+      },
     ],
-    "ultimasCategorias": [
+    ultimasCategorias: [
       {
-        "idCategoria": {
-          "$oid": "66e4886cbddb83c50ec356f5"
+        idCategoria: {
+          $oid: "66e4886cbddb83c50ec356f5",
         },
-        "precioCategoria": 45000
-      }
-    ]
-  }
+        precioCategoria: 45000,
+      },
+      {
+        idCategoria: {
+          $oid: "66e4886cbddb83c50ec356f5",
+        },
+        precioCategoria: 45000,
+      },
+      {
+        idCategoria: {
+          $oid: "66e4886cbddb83c50ec356f5",
+        },
+        precioCategoria: 45000,
+      },
+      {
+        idCategoria: {
+          $oid: "66e4886cbddb83c50ec356f5",
+        },
+        precioCategoria: 45000,
+      },
+    ],
+  };
 
   if (!user) return <div>Cargando...</div>; // Mostrar algo mientras carga
 
@@ -61,13 +85,16 @@ export function Profile() {
         <h1>Últimos servicios requeridos</h1>
         <div className="user-categories">
           {ultimasCategorias.map((cat, key) => (
-            <h2 key={key}>Categoria</h2>
+            <h2 key={key}>Categorias</h2>
           ))}
         </div>
       </section>
       <section className="user-agenda">
         <h1>Agenda</h1>
-        {/* <Agenda/> */}
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DateCalendar
+           defaultValue={dayjs("2024-10-01")}/>
+        </LocalizationProvider>
       </section>
     </div>
   );
