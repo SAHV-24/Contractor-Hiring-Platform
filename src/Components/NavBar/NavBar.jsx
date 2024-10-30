@@ -1,18 +1,17 @@
 // eslint-disable-next-line no-unused-vars
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
+import { useSelector } from "react-redux";
 
 export function NavBar() {
   //TODO! Esto debe de ser implementado con el paradigma de redux!
   // !
-  const isLoggedIn = false;
 
-  const user = {
-    nombre: "Usuario",
-    fotoDePerfil:
-      "https://i.pinimg.com/474x/41/2f/95/412f951a84614f3eaa634b44b7514e0e.jpg",
-    username: "luis123",
-  };
+  const nombre = useSelector((state)=> state.auth.nombre) 
+  const username = useSelector((state)=> state.auth.username) 
+  const fotoDePerfil = useSelector((state)=> state.auth.fotoDePerfil) 
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  
 
   return (
     <header>
@@ -42,28 +41,24 @@ export function NavBar() {
           {isLoggedIn ? (
             <>
               <div className="navbar-picture">
-                <img src={user?.fotoDePerfil} alt="" />
+                <img src={fotoDePerfil} alt="" />
               </div>
-              <span id="user-name">
-                <Link
-                  to={`/profile/${user?.username}`}
-                  id="user-name"
-                  className="link"
-                >
-                  {user?.nombre}
+              <span>
+                <Link to={`/profile/${username}`} className="link">
+                  <a id="user-name"> {nombre}</a>
                 </Link>
               </span>
             </>
           ) : (
             <>
               <div>
-                <Link to={`/login`} id="user-name" className="link">
-                  Iniciar Sesión
+                <Link to={`/login`} className="link">
+                  <a id="user-name"> Iniciar Sesión</a>
                 </Link>
               </div>
               <div>
-                <Link to={`/register`} id="user-name" className="link">
-                  Registrarse
+                <Link to={`/register`} className="link">
+                  <a id="user-name"> Registrarse</a>
                 </Link>
               </div>
             </>

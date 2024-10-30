@@ -7,6 +7,12 @@ header {
   display: flex;
 }
 
+body{
+  margin:0;
+  height: 100%;
+  padding: 0;
+}
+
 #elements {
   width: 700px;
   margin: 30px auto;
@@ -69,7 +75,15 @@ a:hover {
 }
 
 #user-name {
-  font-style: italic;
+  font-style:  italic;
+  font-weight: bold;
+  color:black;
+  transition: transform 0.3s ease; 
+}
+
+#user-name:hover{
+  color:var(--sec-color);
+  transform: scale(1.1); 
 }
 
 /* TODO make navbar resizable */

@@ -7,17 +7,33 @@ module.exports.getAll = async (req, res) => {
 
     res.status(200).json(answer);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).send(err);
+  }
+};
+
+module.exports.getByEmail = async (req, res) => {
+  const email = req.params.email;
+  try {
+    const answer = await Usuarios.findOne({ email: email }).lean();
+
+    if (!answer) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    res.status(200).json(answer);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error al obtener el usuario " + email });
   }
 };
 
 module.exports.getByUsername = async (req, res) => {
   try {
-    const username = req.params.username
-    
+    const username = req.params.username;
+
     // Asegúrate de esperar la resolución de la promesa
-    const answer = await Usuarios.find({ username }).lean(); 
+    const answer = await Usuarios.find({ username }).lean();
 
     // Si no encuentras ningún usuario
     if (!answer || answer.length === 0) {
@@ -31,10 +47,13 @@ module.exports.getByUsername = async (req, res) => {
   }
 };
 
-
 // INSERT
 module.exports.insert = async (req, res) => {
   try {
+
+    console.log("inserting on user")
+
+
     const { email, username } = req.body;
 
     const existingEmail = await Usuarios.findOne({ email });
@@ -49,9 +68,11 @@ module.exports.insert = async (req, res) => {
 
     const usuario = await new Usuarios({ ...req.body });
     const answer = await usuario.save();
-    res.status(201).send(answer);
+    res.status(201).send(usuario);
+
+
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).send(err);
   }
 };
@@ -78,11 +99,10 @@ module.exports.update = async (req, res) => {
     const answer = await usuario.save();
     res.status(200).send(answer);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).send(err);
   }
 };
-
 
 //DELETE
 module.exports.delete = async (req, res) => {

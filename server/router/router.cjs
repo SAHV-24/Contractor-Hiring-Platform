@@ -16,6 +16,10 @@ router.get("/Categorias", categoriasController.getAll);
 router.get("/Citas", citasController.getAll);
 
 // Get by certain parameter, by username, etc..
+router.get("/Usuarios/getByEmail/:email", usuariosController.getByEmail );
+
+
+// Get by certain parameter, by username, etc..
 router.get("/Usuarios/:username", usuariosController.getByUsername);
 // this works with query params, such as : ../Usuarios/username?username='username'
 router.get("/Contratistas/username", contratistasController.getByUsername);

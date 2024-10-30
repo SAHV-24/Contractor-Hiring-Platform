@@ -35,7 +35,7 @@
     margin: 10px 0 5px;
   }
   
-  #register-form input[type="email"],
+  #register-form input,
   #register-form input[type="password"] {
     width: 100%;
     padding: 10px;

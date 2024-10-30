@@ -42,8 +42,7 @@ body {
   flex: 1;
 }
 
-#jcole {
-  height: 100vh;
+#jcole {  
   display: grid;
   grid-template-rows: 1fr 5fr 1fr;
 }

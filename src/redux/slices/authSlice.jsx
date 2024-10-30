@@ -1,34 +1,57 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const authSlice = createSlice({
+
   name: "authSlice",
+
   initialState: {
     email: null,
-    photoURL: null,
-    uid: null,
-    error: "",
+    nombre: null,
+    apellido: null,
+    ciudad: null,
+    username: null,
+    password: null,
+    fotoDePerfil: null,
+    ultimasCategorias: [],
+    isLoggedIn:false,
   },
+
   reducers: {
+
     register: (state, action) => {
-      const { email, photoURL, uid } = action?.payload?.auth;
+      
+      const{email,nombre,apellido,ciudad,username,password,fotoDePerfil,ultimasCategorias} = action.payload.user;
 
       state.email = email;
-      state.photoURL = photoURL;
-      state.uid = uid;
+      state.nombre = nombre;
+      state.apellido = apellido;
+      state.ciudad = ciudad;
+      state.username = username;
+      state.password = password;
+      state.fotoDePerfil = fotoDePerfil;
+      state.ultimasCategorias = ultimasCategorias || [];     
+      state.isLoggedIn = true;
+    
     },
+
+
     login: (state, action) => {
-      const { email, photoURL, uid } = action?.payload?.auth;
+    
+      const{email,nombre,apellido,ciudad,username,password,fotoDePerfil,ultimasCategorias} = action.payload.user;
 
       state.email = email;
-      state.photoURL = photoURL;
-      state.uid = uid;
+      state.nombre = nombre;
+      state.apellido = apellido;
+      state.ciudad = ciudad;
+      state.username = username;
+      state.password = password;
+      state.fotoDePerfil = fotoDePerfil;
+      state.ultimasCategorias = ultimasCategorias || [];     
+      state.isLoggedIn = true;
+
     },
     logout: (state, action) => {
-      state.error = action.payload?.error || "";
-
-      state.email = null;
-      state.photoURL = null;
-      state.uid = null;
+      state.isLoggedIn = false;
     },
 
     error: (state, action) => {
@@ -36,7 +59,7 @@ export const authSlice = createSlice({
     },
     loginWithGoogle: (state, action) => {
       const { email, photoURL, uid } = action.payload;
-
+      state.displayName;
       state.email = email;
       state.photoURL = photoURL;
       state.uid = uid;
