@@ -3,40 +3,33 @@ const Categorias = require("../models/Categorias.cjs");
 // GET ALL
 module.exports.getAll = async (req, res) => {
   try {
-    const r = await Categorias.find();
+    const r = await Categorias.findOne();
     res.status(200);
     res.json(r);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).json(err);
   }
 };
 
 // GET BY ID
 
-module.exports.getById = async (req,res)=>{  
+module.exports.getById = async (req, res) => {
+  const _id = req.params._id;
 
-  try{
-    const _id = req.query._id
+  try {
+    const answer = await Categorias.findOne({ _id }).lean();
 
-    const answer = await Categorias.find({_id}).lean()
-
-    if(answer.length == 0 || !answer){
-      res.status(404).send("La categoría no fue encontrada")
-    }else{
-      
-      res.status(200).json(answer)
-    }   
-    
-  }catch(err){
-    
-    console.error(`${err} al intentar acceder a la categoría con id: ${_id}`)
-    res.status(500).send(err)
+    if (answer == {} || !answer) {
+      res.status(404).send("La categoría no fue encontrada");
+    } else {
+      res.status(200).json(answer);
+    }
+  } catch (err) {
+    console.error(`${err} al intentar acceder a la categoría con id: ${_id}`);
+    res.status(500).send(err);
   }
-}
-
-
-
+};
 
 // INSERT
 module.exports.insert = async (req, res) => {
@@ -46,7 +39,7 @@ module.exports.insert = async (req, res) => {
     const answer = await categoria.save();
     res.status(201).send(answer);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).send(err);
   }
 };
@@ -58,7 +51,7 @@ module.exports.update = async (req, res) => {
 
     const body = req.body;
     // This flag is added because "__v" attribute isn't working idkw
-    const hasBeenUpdated = false; 
+    const hasBeenUpdated = false;
 
     Object.keys(body).forEach((key) => {
       if (body[key]) {
@@ -73,21 +66,19 @@ module.exports.update = async (req, res) => {
     const answer = await categoria.save();
     res.status(200).send(answer);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.status(400).send(err);
   }
 };
 
 // DELETE
-module.exports.delete = async (req,res)=>{
-
-    const id = req.params.id
-  try{
-    const answer = await Categorias.deleteOne({"_id":id})
-    res.status(200).send(answer)
-  }catch(err){
-    console.error(err)
-    res.status(400).json(err)
+module.exports.delete = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const answer = await Categorias.deleteOne({ _id: id });
+    res.status(200).send(answer);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json(err);
   }
-
-}
+};

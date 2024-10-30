@@ -20,11 +20,11 @@ router.get("/Usuarios/getByEmail/:email", usuariosController.getByEmail );
 
 
 // Get by certain parameter, by username, etc..
-router.get("/Usuarios/:username", usuariosController.getByUsername);
+router.get("/Usuarios/getByUsername/:username", usuariosController.getByUsername);
 // this works with query params, such as : ../Usuarios/username?username='username'
 router.get("/Contratistas/username", contratistasController.getByUsername);
 // this works with query params, such as : ../Contratistas/username?username='username'
-router.get("/Categorias/getById",categoriasController.getById)
+router.get("/Categorias/getById/:_id",categoriasController.getById)
 // this works with query params, such as : ../Categorias/getById?_id='id'
 router.get("/Citas/getById",citasController.getById)
 // this works with query params, such as : ../Categorias/getById?_id='id'

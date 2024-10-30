@@ -33,7 +33,7 @@ module.exports.getByUsername = async (req, res) => {
     const username = req.params.username;
 
     // Asegúrate de esperar la resolución de la promesa
-    const answer = await Usuarios.find({ username }).lean();
+    const answer = await Usuarios.findOne({ username }).lean();
 
     // Si no encuentras ningún usuario
     if (!answer || answer.length === 0) {
@@ -50,9 +50,7 @@ module.exports.getByUsername = async (req, res) => {
 // INSERT
 module.exports.insert = async (req, res) => {
   try {
-
-    console.log("inserting on user")
-
+    console.log("inserting on user");
 
     const { email, username } = req.body;
 
@@ -69,8 +67,6 @@ module.exports.insert = async (req, res) => {
     const usuario = await new Usuarios({ ...req.body });
     const answer = await usuario.save();
     res.status(201).send(usuario);
-
-
   } catch (err) {
     console.error(err);
     res.status(400).send(err);

@@ -25,7 +25,9 @@ export function AppRouter() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/help" element={<Help />}></Route>
-          <Route path={`/profile/:username`} element={<Profile />}></Route>
+          <Route path="/profile">
+            <Route path=":username" element={<Profile />} />
+          </Route>
           <Route path="/*" element={<Error404 />} />
           <Route
             path="/login"
