@@ -1,15 +1,16 @@
 footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background-color: var(--sec-color);
   color: rgb(91, 91, 91);
   text-align: center;
   padding: 20px 0;
-  margin-top: auto;
-  height: 80%;
-  
+  height: auto;
   display: grid;
   grid-template-columns: 1fr 0.75fr;
-
 }
+
 
 #footer-contact {
   align-items: center;
