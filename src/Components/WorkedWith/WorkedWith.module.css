@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  font-size:14px
+}
+
+.contratistaImg {
+  border-radius: 100%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  width: 70px;
+  height: 70px;
+}
+
+.texting {
+  padding: 0;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contratistaName,
+.jobTypo {
+  padding: 0;
+  padding-left: 5px;
+}
+
+.contratistaName {
+  color: var(--ter-color);
+  font-size: 20px;
+}
+
+.contratistaName:hover {
+  color: var(--sec-color);
+  cursor: pointer;
+}
+
+.jobTypo {
+  font-style: italic;
+  text-decoration: underline;
+  font-size: 17px;
+}
+
+
+span {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.texting h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.workedWith {
+  display: flex;
+  gap: 15px;
+  padding: 5px 12px;
+  margin-top: 20px;
+  border-radius: 20px;
+  border: 3px solid var(--ter-color);
+  width: max-content;
+}

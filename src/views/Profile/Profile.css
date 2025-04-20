@@ -1,0 +1,138 @@
+.user-section,
+.name,
+.username,
+.city {
+  color: black;
+}
+
+.user {
+  display: grid;
+  grid-template-rows: 3;
+  place-items: center;
+}
+
+.user-section {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr;
+  grid-template-rows: 1;
+}
+
+.user-info {
+  place-self: right;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.user-img {
+  height: 100px;
+  width:100px;
+  object-fit: cover;
+  border-radius: 100px;
+  place-self: center;
+}
+
+.name {
+  font-weight: bolder;
+  font-size: 36px;
+  margin: 0;
+  margin-bottom: -0.3em;
+  padding: 0;
+}
+
+.username {
+  font-size: 10px;
+  margin-top: 6px;
+  padding: 0;
+  color: var(--main-color);
+  margin-bottom: -0.3em;
+  font-style: italic;
+}
+
+.city {
+  font-size: 10px;
+  margin-top:2px;
+  padding: 0;
+  color: #a9a9a9;
+}
+
+.user-btn:hover {
+  span {
+    transform: scale(1.1);
+  }
+
+  .logo {
+    transform: scale(1.1);
+  }
+}
+
+.logo{
+    height:20px;
+}
+
+
+.user-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+
+.user-btn * {
+  padding: 0;
+  margin: 0 3px 0 0;
+  font-size: 14px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.user-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:8px;
+  margin-left: 20px;
+}
+
+
+.user-services {
+  display: grid;
+  grid-auto-rows: 0.5fr 2fr;
+  width: 80%;
+}
+
+.user-services h1 {
+  justify-self: start;
+  color: var(--ter-color);
+}
+
+.user-categories {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-wrap: wrap;
+ gap:7rem
+}
+
+.user-agenda{  
+  display: grid;
+  grid-auto-rows: 0.5fr 2fr;
+  width: 80%;
+}
+
+.user-agenda{
+  color:var(--main-color)
+}
+
+
+.logout-btn{
+  background-color: red;
+}
+
+.logout-btn:hover{
+  background-color: darkred;
+}

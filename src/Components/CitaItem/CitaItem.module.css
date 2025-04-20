@@ -1,0 +1,59 @@
+.estado {
+  text-align: center;
+  font-size: x-large;
+  margin-top: 10px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+
+.finalizada {
+  color: green;
+  cursor: not-allowed;
+}
+
+.pendiente {
+  color: orange;
+  cursor: pointer;
+}
+
+.cancelada {
+  color: red;
+  cursor: not-allowed;
+}
+
+.cita-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  margin-left: 200px;
+  margin-right: 200px;
+  box-shadow: 5px 10px rgb(238, 237, 237);
+}
+
+.usuario-info,
+.contratista-info {
+  flex: 1;
+  padding: 10px;
+}
+
+.contratista-info {
+  text-align: right;
+}
+
+.perfil-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.detalles-cita {
+  text-align: center;
+  flex: 1;
+  padding: 10px;
+}

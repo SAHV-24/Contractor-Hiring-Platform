@@ -1,0 +1,107 @@
+/* Estilo para el contenedor de los mensajes */
+.fromMe {
+  align-self: flex-end;
+  background-color: var(--ter-color);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 60%;
+  margin: 10px;
+  word-wrap: break-word;  /* Permite que las palabras largas se rompan */
+  overflow-wrap: break-word;  /* Garantiza que el texto largo se ajuste */
+  white-space: normal; /* Asegura que el texto se rompa si es necesario */
+}
+
+.fromOther {
+  align-self: flex-start;
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 60%;
+  margin: 10px;
+  word-wrap: break-word;  /* Permite que las palabras largas se rompan */
+  overflow-wrap: break-word;  /* Garantiza que el texto largo se ajuste */
+  white-space: normal; /* Asegura que el texto se rompa si es necesario */
+}
+
+/* Estilo de los mensajes */
+.message {
+  margin: 10px 0;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 10px;
+  line-height: 1.4;
+  word-wrap: break-word;  /* Permite que las palabras largas se rompan */
+  overflow-wrap: break-word;  /* Garantiza que el texto largo se ajuste */
+  white-space: normal; /* Asegura que el texto se rompa si es necesario */
+}
+
+/* Estilo para el nombre de usuario */
+.username {
+  font-size: 15px;
+  color: white;
+}
+
+/* Estilo para la parte de chat (usuario) */
+.userChat {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 250px;
+  font-size: 22px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Estilo para la imagen de perfil */
+.profilePic {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+/* Estilo para el input */
+.inputForm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #1f1f1f;
+  border-top: 1px solid #444;
+  border-radius: 0 0 20px 20px;
+}
+
+.input {
+  flex: 1;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 18px;
+  padding: 8px 15px;
+  margin-right: 10px;
+  background-color: #444;
+  border: 1px solid #666;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--sec-color);
+}
+
+/* Estilo para el botón de enviar */
+.button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #fd8b00;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(253, 139, 0, 0.3);
+}
+
+.button:hover {
+  background-color: #e07c00;
+}

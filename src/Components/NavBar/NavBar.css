@@ -1,0 +1,98 @@
+header {
+  color: white;
+  top: 0;
+  margin: 0 auto;
+  z-index: 2;
+  width: 100vw;
+  display: flex;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  padding: 0;
+}
+
+#elements {
+  width: 700px;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--main-color);
+  height: 45px;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.link {
+  font-style: normal;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+span {
+  padding: 0 21px;
+}
+
+a:hover {
+  color: #4d4d4d;
+}
+
+#user-section,
+#links-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#user-section {
+  gap: 25px;
+  font-style: normal;
+}
+
+.navbar-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-picture img {
+  width:35px;
+  height: 35px;
+  border-radius: 100%;
+}
+
+.navbar-picture a {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#user-name {
+  font-style: italic;
+  font-weight: bold;
+  color: black;
+  transition: transform 0.3s ease;
+}
+
+#user-name:hover {
+  color: var(--sec-color);
+  transform: scale(1.1);
+}
+
+.want-to-publish {
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+}
+
+.want-to-publish:hover {
+  cursor: pointer;
+  color:#4d4d4d;
+  opacity: 0.5;
+}
